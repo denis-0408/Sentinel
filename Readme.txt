@@ -1,7 +1,8 @@
-Proyecto Iot Sentinel 
+Proyecto IoT Sentinel 
 
 Participantes: 
 - Denisse
 - Daniela
 - Ignacio
+
 
