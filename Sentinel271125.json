@@ -1,0 +1,711 @@
+[
+    {
+        "id": "2d5db8d289a5432e",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "a8f7c9e.f570838",
+        "type": "mqtt-broker",
+        "name": "EMQX Docker",
+        "broker": "emqx",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "56affe2ead25128e",
+        "type": "ui_base",
+        "theme": {
+            "angularTheme": {
+                "accents": "blue",
+                "background": "grey",
+                "palette": "light",
+                "primary": "indigo",
+                "warn": "red"
+            },
+            "customTheme": {
+                "baseColor": "#000000",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "default": "#4B7930",
+                "name": "Untitled Theme 1",
+                "reset": false
+            },
+            "darkTheme": {
+                "baseColor": "#8f8f8f",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "default": "#097479",
+                "edited": true,
+                "reset": false
+            },
+            "lightTheme": {
+                "baseColor": "#000000",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "default": "#0094CE",
+                "edited": true,
+                "reset": false
+            },
+            "name": "theme-dark",
+            "themeState": {
+                "base-color": {
+                    "default": "#097479",
+                    "edited": true,
+                    "value": "#8f8f8f"
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                },
+                "group-backgroundColor": {
+                    "edited": false,
+                    "value": "#333333"
+                },
+                "group-borderColor": {
+                    "edited": true,
+                    "value": "#555555"
+                },
+                "group-textColor": {
+                    "edited": true,
+                    "value": "#b5b5b5"
+                },
+                "page-backgroundColor": {
+                    "edited": true,
+                    "value": "#111111"
+                },
+                "page-sidebar-backgroundColor": {
+                    "edited": true,
+                    "value": "#ffffff"
+                },
+                "page-titlebar-backgroundColor": {
+                    "edited": true,
+                    "value": "#8f8f8f"
+                },
+                "widget-backgroundColor": {
+                    "edited": true,
+                    "value": "#8f8f8f"
+                },
+                "widget-borderColor": {
+                    "edited": false,
+                    "value": "#333333"
+                },
+                "widget-textColor": {
+                    "edited": true,
+                    "value": "#eeeeee"
+                }
+            }
+        },
+        "site": {
+            "allowSwipe": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "hideToolbar": "true",
+            "lockMenu": "false",
+            "name": "Node-RED Dashboard",
+            "sizes": {
+                "cx": 20,
+                "cy": 20,
+                "gx": 16,
+                "gy": 16,
+                "px": 16,
+                "py": 16,
+                "sx": 60,
+                "sy": 60
+            }
+        }
+    },
+    {
+        "id": "2e65c8aa579b9053",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "2f4b0f9.fd0b4f",
+        "type": "ui_group",
+        "name": "Sensores de Distancia",
+        "tab": "2e65c8aa579b9053",
+        "order": 1,
+        "disp": true,
+        "width": 16,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "6ed9d8775a154179",
+        "type": "MySQLdatabase",
+        "name": "db",
+        "host": "172.20.0.10",
+        "port": "3306",
+        "db": "nodered_db",
+        "tz": "",
+        "charset": "UTF8"
+    },
+    {
+        "id": "f62f0a5.f09d0f8",
+        "type": "ui_group",
+        "name": "Controles de Alarma",
+        "tab": "2e65c8aa579b9053",
+        "order": 2,
+        "disp": true,
+        "width": 16,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "5a4f7831.a5b088",
+        "type": "ui_group",
+        "name": "Acelerómetro",
+        "tab": "2e65c8aa579b9053",
+        "order": 3,
+        "disp": true,
+        "width": 16,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "dc6d37a211dec666",
+        "type": "mqtt in",
+        "z": "2d5db8d289a5432e",
+        "name": "Recibir datos de Sentinel",
+        "topic": "sentinel/datos",
+        "qos": "2",
+        "datatype": "json",
+        "broker": "a8f7c9e.f570838",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 150,
+        "y": 140,
+        "wires": [
+            [
+                "8909d93b15340cdb",
+                "7b3456ba9524a78a"
+            ]
+        ]
+    },
+    {
+        "id": "143f7673cc946caf",
+        "type": "mqtt out",
+        "z": "2d5db8d289a5432e",
+        "name": "Enviar Control a Sentinel",
+        "topic": "sentinel/control",
+        "qos": "0",
+        "retain": "false",
+        "broker": "a8f7c9e.f570838",
+        "x": 730,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "7925da5bef6de828",
+        "type": "function",
+        "z": "2d5db8d289a5432e",
+        "name": "Preparar SQL",
+        "func": "// Se recuperan datos guardados\nvar datos = flow.get(\"datosSentinel\");\nif (!datos) {\n    node.warn(\"¡Esperando datos del Sentinel...\");\n    return null;\n}\nvar fecha = new Date().toISOString().slice(0, 19).replace('T', ' ');\nvar tabla = \"lecturas\"; // O 'nodered_db.lecturas' si necesitas el prefijo\n\nvar query = \"INSERT INTO \" + tabla + \" (fecha, distancia1, distancia2, accel_z, alarma, orientacion) VALUES \";\n\n// Aquí armamos la fila. Las comillas simples son  para los textos!\nquery += \"('\" + fecha + \"', \" +\n         datos.dist_izq + \", \" +\n         datos.dist_cen + \", \" +\n         datos.accelZ + \", '\" +\n         datos.alarma + \"', '\" +      \n         datos.orientacion + \"');\"; \n\n// Enviamos la consulta\nmsg.topic = query;\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 320,
+        "y": 400,
+        "wires": [
+            [
+                "ded52c2a3d87cd37"
+            ]
+        ]
+    },
+    {
+        "id": "8909d93b15340cdb",
+        "type": "debug",
+        "z": "2d5db8d289a5432e",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 140,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "c2356da4878536ba",
+        "type": "inject",
+        "z": "2d5db8d289a5432e",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "0.5",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 110,
+        "y": 400,
+        "wires": [
+            [
+                "7925da5bef6de828"
+            ]
+        ]
+    },
+    {
+        "id": "7b3456ba9524a78a",
+        "type": "function",
+        "z": "2d5db8d289a5432e",
+        "name": "function 6",
+        "func": "\n// Preparamos los 5 mensajes individuales para tus gauges y textos\nvar msg1 = { payload: msg.payload.dist_izq };     // Salida 1: Sensor 1\nvar msg2 = { payload: msg.payload.dist_cen };     // Salida 2: Sensor 2\nvar msg3 = { payload: msg.payload.accelZ };       // Salida 3: Gráfico Z\nvar msg4 = { payload: msg.payload.alarma };       // Salida 4: Texto Alarma\nvar msg5 = { payload: msg.payload.orientacion };  // Salida 5: Texto Orientación\n\n// Guardar en memoria \nflow.set(\"datosSentinel\", msg.payload);\n\n// Enviamos los mensajes a las 5 salidas visuales\nreturn [msg1, msg2, msg3, msg4, msg5];",
+        "outputs": 5,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 140,
+        "wires": [
+            [
+                "8728738b8d75b265"
+            ],
+            [
+                "71310e508b4e29ca"
+            ],
+            [
+                "1eea248a7d514ff1"
+            ],
+            [
+                "8cfa3257b28b65f6"
+            ],
+            [
+                "5e524429b7823174"
+            ]
+        ]
+    },
+    {
+        "id": "28a625b7e160d2fd",
+        "type": "ui_button",
+        "z": "2d5db8d289a5432e",
+        "name": "Alarma Remota",
+        "group": "f62f0a5.f09d0f8",
+        "order": 2,
+        "width": 16,
+        "height": 1,
+        "passthru": false,
+        "label": "ACTIVAR BUZZER",
+        "tooltip": "Envía una señal al bastón para activar el buzzer",
+        "color": "",
+        "bgcolor": "#ff0000",
+        "className": "",
+        "icon": "fa-bullhorn",
+        "payload": "ALARMA_REMOTA",
+        "payloadType": "str",
+        "topic": "",
+        "topicType": "str",
+        "x": 500,
+        "y": 480,
+        "wires": [
+            [
+                "143f7673cc946caf"
+            ]
+        ]
+    },
+    {
+        "id": "8cfa3257b28b65f6",
+        "type": "ui_text",
+        "z": "2d5db8d289a5432e",
+        "group": "f62f0a5.f09d0f8",
+        "order": 1,
+        "width": 16,
+        "height": 1,
+        "name": "Estado Alarma",
+        "label": "ESTADO ALARMA",
+        "format": "<div style=\"display: flex; justify-content: center; align-items: center; height: 100%;\">     <div style=\"         width: 100%;         text-align: center;         padding: 12px;         border-radius: 12px;         font-weight: 700;         font-size: 16px;         letter-spacing: 1px;         /* Color dinámico: Rojo si es ALARMA, Verde si no */         background: {{msg.payload == 'ALARMA' ? 'linear-gradient(45deg, #b71c1c, #f44336)' : 'linear-gradient(45deg, #1b5e20, #4caf50)'}};         color: white;         box-shadow: 0 4px 15px {{msg.payload == 'ALARMA' ? 'rgba(244, 67, 54, 0.5)' : 'rgba(76, 175, 80, 0.5)'}};         border: 1px solid rgba(255,255,255,0.2);     \">         <i class=\"fa {{msg.payload == 'ALARMA' ? 'fa-bell' : 'fa-check-circle'}}\"></i>          {{msg.payload}}     </div> </div>",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": "",
+        "color": "#000000",
+        "x": 700,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "5e524429b7823174",
+        "type": "ui_text",
+        "z": "2d5db8d289a5432e",
+        "group": "5a4f7831.a5b088",
+        "order": 3,
+        "width": 8,
+        "height": 1,
+        "name": "Estado Orientación",
+        "label": "Orientación",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": "",
+        "color": "#000000",
+        "x": 710,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "8728738b8d75b265",
+        "type": "ui_gauge",
+        "z": "2d5db8d289a5432e",
+        "name": "Sensor 1 (cm)",
+        "group": "2f4b0f9.fd0b4f",
+        "order": 1,
+        "width": 8,
+        "height": 6,
+        "gtype": "compass",
+        "title": "Sensor 1 (cm)",
+        "label": "cm",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#ff0000",
+            "#ffff00",
+            "#00ff00"
+        ],
+        "seg1": "10",
+        "seg2": "30",
+        "diff": false,
+        "className": "",
+        "x": 700,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "71310e508b4e29ca",
+        "type": "ui_gauge",
+        "z": "2d5db8d289a5432e",
+        "name": "Sensor 2 (cm)",
+        "group": "2f4b0f9.fd0b4f",
+        "order": 2,
+        "width": 8,
+        "height": 6,
+        "gtype": "compass",
+        "title": "Sensor 2 (cm)",
+        "label": "cm",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#ff0000",
+            "#ffff00",
+            "#00ff00"
+        ],
+        "seg1": "10",
+        "seg2": "30",
+        "diff": false,
+        "className": "",
+        "x": 700,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "1eea248a7d514ff1",
+        "type": "ui_chart",
+        "z": "2d5db8d289a5432e",
+        "name": "Orientación (Eje Z)",
+        "group": "5a4f7831.a5b088",
+        "order": 1,
+        "width": 8,
+        "height": 4,
+        "label": "Aceleración Z (g)",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "-2",
+        "ymax": "2",
+        "removeOlder": "1",
+        "removeOlderPoints": "60",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 710,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ded52c2a3d87cd37",
+        "type": "mysql",
+        "z": "2d5db8d289a5432e",
+        "mydb": "6ed9d8775a154179",
+        "name": "",
+        "x": 470,
+        "y": 360,
+        "wires": [
+            [
+                "c5b08e71b4391f4e"
+            ]
+        ]
+    },
+    {
+        "id": "4c9ff477fa619950",
+        "type": "ui_table",
+        "z": "2d5db8d289a5432e",
+        "group": "5a4f7831.a5b088",
+        "name": "Historial Reciente",
+        "order": 2,
+        "width": 8,
+        "height": 5,
+        "columns": [
+            {
+                "align": "left",
+                "field": "fecha",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                },
+                "title": "Hora",
+                "width": ""
+            },
+            {
+                "align": "left",
+                "field": "alarma",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                },
+                "title": "Estado",
+                "width": ""
+            },
+            {
+                "align": "left",
+                "field": "distancia1",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                },
+                "title": "Sensor1",
+                "width": ""
+            },
+            {
+                "align": "left",
+                "field": "distancia2",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                },
+                "title": "Sensor 2",
+                "width": ""
+            },
+            {
+                "align": "left",
+                "field": "orientacion",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                },
+                "title": "Posicion",
+                "width": ""
+            }
+        ],
+        "outputs": 0,
+        "cts": false,
+        "x": 950,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "0fa83179a04068e9",
+        "type": "mysql",
+        "z": "2d5db8d289a5432e",
+        "mydb": "6ed9d8775a154179",
+        "name": "",
+        "x": 770,
+        "y": 360,
+        "wires": [
+            [
+                "4c9ff477fa619950"
+            ]
+        ]
+    },
+    {
+        "id": "c5b08e71b4391f4e",
+        "type": "function",
+        "z": "2d5db8d289a5432e",
+        "name": "Leer Datos",
+        "func": "// Esta es la QUERY para leer los datos\n// Le pedimos las últimas 10 filas ordenadas por fecha (descendente)\nmsg.topic = \"SELECT fecha, distancia1, distancia2, accel_z, alarma, orientacion FROM lecturas ORDER BY fecha DESC LIMIT 20;\";\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 610,
+        "y": 400,
+        "wires": [
+            [
+                "0fa83179a04068e9"
+            ]
+        ]
+    },
+    {
+        "id": "b4d3a2658a5c0768",
+        "type": "ui_template",
+        "z": "2d5db8d289a5432e",
+        "group": "2f4b0f9.fd0b4f",
+        "name": "CSS Tema Oscuro",
+        "order": 3,
+        "width": 16,
+        "height": 1,
+        "format": "<style>\n    /* =========================================\n       0. IMPORTAR FUENTE MODERNA (Google Fonts)\n       ========================================= */\n    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&family=Roboto+Mono:wght@400;700&display=swap');\n\n    /* =========================================\n       1. VARIABLES DEL TEMA (CONFIGURACIÓN)\n       ========================================= */\n    :root {\n        --bg-profundo: #090b10;\n        /* Fondo casi negro azulado */\n        --glass-card: rgba(22, 27, 34, 0.7);\n        /* Cristal oscuro */\n        --glass-border: rgba(255, 255, 255, 0.08);\n        --neon-verde: #00ff9d;\n        /* Verde Cyberpunk */\n        --neon-glow: rgba(0, 255, 157, 0.25);\n        --texto-principal: #e6edf3;\n        --texto-secundario: #8b949e;\n        --fuente-ui: 'Montserrat', sans-serif;\n        --fuente-data: 'Roboto Mono', monospace;\n    }\n\n    /* =========================================\n       2. BASE Y FONDO\n       ========================================= */\n    body,\n    .nr-dashboard-theme,\n    ui-card-panel {\n        background-color: var(--bg-profundo) !important;\n        background-image: radial-gradient(circle at 50% 0%, #161b22 0%, #090b10 70%) !important;\n        font-family: var(--fuente-ui) !important;\n        color: var(--texto-principal) !important;\n    }\n\n    /* =========================================\n       3. TARJETAS (EFECTO CRISTAL)\n       ========================================= */\n    md-card {\n        background-color: var(--glass-card) !important;\n        backdrop-filter: blur(12px);\n        /* Efecto borroso detrás */\n        -webkit-backdrop-filter: blur(12px);\n        border: 1px solid var(--glass-border) !important;\n        border-radius: 16px !important;\n        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;\n        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);\n        overflow: hidden;\n        /* Para que nada se salga de los bordes redondos */\n    }\n\n    /* Efecto Hover: La tarjeta \"respira\" */\n    md-card:hover {\n        transform: translateY(-3px);\n        border-color: rgba(0, 255, 157, 0.3) !important;\n        box-shadow: 0 12px 40px rgba(0, 255, 157, 0.05) !important;\n    }\n\n    .nr-dashboard-cardtitle {\n        font-family: var(--fuente-ui);\n        color: var(--neon-verde) !important;\n        font-size: 11px !important;\n        letter-spacing: 2px;\n        text-transform: uppercase;\n        font-weight: 700;\n        opacity: 0.9;\n        margin-bottom: 15px;\n        border-bottom: 1px solid var(--glass-border);\n        padding-bottom: 8px;\n    }\n\n    /* =========================================\n       4. WIDGETS DE ALTO IMPACTO\n       ========================================= */\n\n    /* Header (Barra Superior) */\n    md-toolbar {\n        background: rgba(22, 27, 34, 0.95) !important;\n        border-bottom: 1px solid var(--neon-verde) !important;\n        box-shadow: 0 0 20px var(--neon-glow) !important;\n    }\n\n    /* Textos de Valores (Números grandes) */\n    text.value-text,\n    .value-text {\n        font-family: var(--fuente-data) !important;\n        fill: var(--texto-principal) !important;\n        color: var(--texto-principal) !important;\n        font-weight: 400 !important;\n    }\n\n    /* Gráficos (Chart) - Línea Brillante */\n    .nr-dashboard-chart path {\n        stroke: var(--neon-verde) !important;\n        stroke-width: 2px !important;\n        filter: drop-shadow(0 0 6px var(--neon-glow));\n    }\n\n    .nr-dashboard-chart .grid line {\n        stroke: rgba(255, 255, 255, 0.03) !important;\n    }\n\n    .nr-dashboard-chart .grid text {\n        fill: var(--texto-secundario) !important;\n        font-size: 10px;\n    }\n\n    /* Botones */\n    .md-button.md-raised {\n        background: linear-gradient(135deg, #00b09b, #96c93d) !important;\n        /* Gradiente moderno */\n        border-radius: 50px !important;\n        color: #fff !important;\n        font-weight: bold;\n        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;\n    }\n\n    /* =========================================\n       5. LA TABLA (ESTILO FUTURISTA)\n       ========================================= */\n    .ui-table-list {\n        background: transparent !important;\n        border: none !important;\n    }\n\n    /* Cabecera Flotante */\n    .ui-table-list table thead tr th {\n        background: rgba(0, 0, 0, 0.6) !important;\n        color: var(--neon-verde) !important;\n        border-bottom: 2px solid var(--neon-verde) !important;\n        font-family: var(--fuente-ui);\n        font-weight: 700 !important;\n        font-size: 12px !important;\n        text-transform: uppercase;\n        letter-spacing: 1px;\n        padding: 15px 10px !important;\n    }\n\n    /* Cuerpo de la tabla */\n    .ui-table-list table tbody tr {\n        background: rgba(255, 255, 255, 0.01) !important;\n        transition: background 0.2s ease;\n        border-bottom: 1px solid rgba(255, 255, 255, 0.03);\n    }\n\n    /* Efecto Hover en Fila */\n    .ui-table-list table tbody tr:hover {\n        background: rgba(0, 255, 157, 0.1) !important;\n    }\n\n    /* Celdas */\n    .ui-table-list table tbody tr td {\n        font-family: var(--fuente-data);\n        /* Fuente tipo código para datos */\n        font-size: 13px !important;\n        color: var(--texto-principal) !important;\n        border-top: none !important;\n        /* Limpiamos líneas horizontales viejas */\n        padding: 12px 10px !important;\n    }\n\n    /* Scrollbar Minimalista */\n    ::-webkit-scrollbar {\n        width: 6px;\n        background: #090b10;\n    }\n\n    ::-webkit-scrollbar-thumb {\n        background: #30363d;\n        border-radius: 3px;\n    }\n\n    ::-webkit-scrollbar-thumb:hover {\n        background: var(--neon-verde);\n    }\n\n    /* Paginación */\n    md-table-pagination {\n        color: var(--texto-secundario) !important;\n        border: none !important;\n    }\n\n    .md-select-value span {\n        color: var(--neon-verde) !important;\n    }\n</style>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "global",
+        "className": "",
+        "x": 290,
+        "y": 480,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6cef7b28f14df8f1",
+        "type": "inject",
+        "z": "2d5db8d289a5432e",
+        "name": "Borrar datos",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "DELETE FROM lecturas;",
+        "payload": "",
+        "payloadType": "date",
+        "x": 110,
+        "y": 360,
+        "wires": [
+            [
+                "ded52c2a3d87cd37"
+            ]
+        ]
+    },
+    {
+        "id": "d97f9268c2057f30",
+        "type": "function",
+        "z": "2d5db8d289a5432e",
+        "name": "Datos randomicos",
+        "func": "// 1. Obtener fecha actual (formato compatible con SQL)\nvar now = new Date();\nvar fecha = now.toISOString().slice(0, 19).replace('T', ' ');\n\n// 2. Simular valores numéricos aleatorios\nvar dist_izq = Math.floor(Math.random() * 150); // 0 a 150 cm\nvar dist_cen = Math.floor(Math.random() * 150);\n\n// 3. Lógica para simular si el bastón está Vertical u Horizontal\n// Generamos una probabilidad: 20% de chances de que simule una caída\nvar esCaida = Math.random() < 0.2;\n\nvar accelZ_simulado;\nvar orientacion_txt;\nvar alarma_txt;\n\nif (esCaida) {\n    // CASO CAÍDA (Horizontal)\n    accelZ_simulado = 1.5; // Valor bajo en Z (simula estar acostado)\n    orientacion_txt = \"Horizontal\";\n    alarma_txt = \"ALERTA CAIDA\";\n} else {\n    // CASO NORMAL (Vertical)\n    accelZ_simulado = 9.8; // Valor de gravedad normal\n    orientacion_txt = \"Vertical\";\n    // Si hay obstáculo cerca, cambiamos la alarma, si no, todo OK\n    if (dist_izq < 30 || dist_cen < 30) {\n        alarma_txt = \"PRECAUCION\";\n    } else {\n        alarma_txt = \"Normal\";\n    }\n}\n\n// 4. Armar la consulta SQL EXACTA usando tus nombres de columna\n// Tabla: lecturas\n// Columnas: fecha, distancia1, distancia2, accel_z, alarma, orientacion\n\nvar query = \"INSERT INTO lecturas (fecha, distancia1, distancia2, accel_z, alarma, orientacion) VALUES \";\n\nquery += \"('\" + fecha + \"', \" +\n    dist_izq + \", \" +\n    dist_cen + \", \" +\n    accelZ_simulado + \", '\" +\n    alarma_txt + \"', '\" +\n    orientacion_txt + \"');\";\n\nmsg.topic = query;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 270,
+        "y": 560,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2db6fa24d79db5c6",
+        "type": "inject",
+        "z": "2d5db8d289a5432e",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 90,
+        "y": 560,
+        "wires": [
+            [
+                "d97f9268c2057f30"
+            ]
+        ]
+    },
+    {
+        "id": "5a043066442018a1",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "node-red-dashboard": "3.6.6",
+            "node-red-node-mysql": "2.0.0",
+            "node-red-node-ui-table": "0.4.5"
+        }
+    }
+]
